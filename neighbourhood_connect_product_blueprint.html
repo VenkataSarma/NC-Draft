@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neighbourhood Connect — Product Blueprint</title>
+<style>
+:root{--ink:#17231f;--muted:#66736d;--paper:#f6f8f5;--card:#fff;--line:#e2e9e3;--green:#176b50;--lime:#dff2a5;--soft:#eaf4ee;--orange:#f5a65b;--shadow:0 12px 34px rgba(23,50,38,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1160px;margin:auto;padding:0 26px}
+.hero{background:#122b22;color:#fff;padding:70px 0 58px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:430px;height:430px;border:1px solid #ffffff20;border-radius:50%;right:-110px;top:-180px;box-shadow:0 0 0 55px #ffffff08,0 0 0 110px #ffffff05}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800;color:#b9dc9b}
+h1{font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-.045em;max-width:800px;margin:18px 0}
+.hero p{max-width:760px;color:#d4e2da;font-size:18px}
+.tagline{font-size:14px!important;color:#c4e5a4!important;font-weight:700;letter-spacing:.06em}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.pill{border:1px solid #ffffff35;border-radius:99px;padding:7px 13px;font-size:13px;color:#e6eee9}
+.layout{display:grid;grid-template-columns:245px minmax(0,1fr);gap:38px;padding-top:38px;padding-bottom:80px}
+nav{position:sticky;top:20px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+nav strong{display:block;margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+nav a{display:block;padding:7px 8px;border-radius:8px;font-size:13px;color:#45544c}nav a:hover{background:var(--soft);text-decoration:none}
+main{min-width:0}section{margin-bottom:42px;scroll-margin-top:24px}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+h2{font-size:30px;line-height:1.2;letter-spacing:-.03em;margin:7px 0 14px}
+h3{font-size:18px;margin:0 0 8px;line-height:1.3}
+p{margin:8px 0 14px}.lead{font-size:18px;color:#46564d}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:20px;box-shadow:var(--shadow)}
+.card p:last-child{margin-bottom:0}.card .num{font-size:12px;color:var(--green);font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+.callout{background:var(--soft);border-left:4px solid var(--green);padding:17px 20px;border-radius:0 12px 12px 0;margin:18px 0}
+.warning{background:#fff4e8;border-left-color:#df8b36}
+ul,ol{padding-left:21px}li{margin:6px 0}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:20px 0}
+.step{background:#fff;border:1px solid var(--line);padding:10px 13px;border-radius:10px;font-weight:650;font-size:13px}
+.arrow{color:#8b9b91;font-weight:800}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:13px;overflow:hidden;margin:16px 0;font-size:14px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#edf4ee;color:#31463a;font-size:12px;text-transform:uppercase;letter-spacing:.06em}tr:last-child td{border-bottom:0}
+.status{display:inline-block;padding:3px 9px;border-radius:30px;font-size:11px;font-weight:800;background:#e9f4ed;color:#176b50}.planned{background:#fff1df;color:#98601f}.prototype{background:#edf0f4;color:#586579}
+.phase{border-left:2px solid #b9d3c1;padding:0 0 22px 22px;margin-left:8px;position:relative}.phase:before{content:"";position:absolute;width:12px;height:12px;background:var(--green);border-radius:50%;left:-7px;top:4px}
+.phase h3{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.small{font-size:13px;color:var(--muted)}
+.quote{font-size:22px;line-height:1.4;font-weight:750;letter-spacing:-.02em;color:#244637}
+footer{background:#122b22;color:#d4e2da;padding:28px 0;font-size:13px}
+@media(max-width:850px){.layout{grid-template-columns:1fr;gap:24px}nav{position:relative;top:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}nav strong{grid-column:1/-1}.grid{grid-template-columns:1fr}}
+@media(max-width:520px){.wrap{padding:0 17px}.hero{padding:54px 0 44px}nav{grid-template-columns:1fr 1fr}h2{font-size:26px}table{font-size:12px}th,td{padding:9px}}
+@media print{body{background:#fff}.hero,footer{background:#122b22!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.layout{display:block}nav{display:none}.card{box-shadow:none;break-inside:avoid}section{break-inside:avoid}a{color:inherit}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Product vision · Project blueprint</div>
+    <h1>Neighbourhood<br>Connect</h1>
+    <p class="tagline">FIND PEOPLE. SHARE INTERESTS. EXPERIENCE MORE.</p>
+    <p>A community-driven platform that helps people meet nearby, take part in activities, support travellers, discuss local issues and build stronger real-world relationships.</p>
+    <div class="hero-pills"><span class="pill">Hyperlocal discovery</span><span class="pill">Real-world activities</span><span class="pill">Community participation</span><span class="pill">AI-powered relevance</span></div>
+  </div>
+</header>
+
+<div class="wrap layout">
+<nav aria-label="Page contents">
+<strong>On this page</strong>
+<a href="#overview">01 · Project overview</a><a href="#problem">02 · Problem being solved</a>
+<a href="#vision">03 · Vision and principles</a><a href="#experience">04 · How it works</a>
+<a href="#features">05 · Core features</a><a href="#travellers">06 · Travellers</a>
+<a href="#roadmap">07 · Product versions</a><a href="#intelligence">08 · AI and recommendations</a>
+<a href="#safety">09 · Trust and safety</a><a href="#status">10 · Current build status</a>
+<a href="#architecture">11 · Technology</a><a href="#success">12 · Success measures</a>
+<a href="#pitch">13 · One-minute explanation</a>
+</nav>
+
+<main>
+<section id="overview">
+<div class="kicker">01 · Project overview</div><h2>What is Neighbourhood Connect?</h2>
+<p class="lead">Neighbourhood Connect is a hyperlocal social discovery and community platform. It helps people discover others around them, find people with shared interests, make plans and participate in things happening in their neighbourhood.</p>
+<p>The starting point is simple: people may live close to one another, but they often do not know each other. The app makes it easier to turn that physical proximity into meaningful social connection and collective action.</p>
+<div class="callout"><strong>Core idea:</strong> Move social interaction beyond likes, followers and endless scrolling. Help people meet, participate, collaborate and get things done in the real world.</div>
+<p><strong>Initial target market:</strong> Hyderabad, India, with the product designed to expand to other neighbourhoods and cities.</p>
+</section>
+
+<section id="problem">
+<div class="kicker">02 · The problem</div><h2>People are nearby, but communities are disconnected</h2>
+<div class="grid">
+<div class="card"><div class="num">Problem 01</div><h3>Finding people to do things with</h3><p>Someone wants to go for a morning walk, play cricket, learn guitar or watch a movie, but cannot find a suitable group nearby.</p></div>
+<div class="card"><div class="num">Problem 02</div><h3>Digital connection without real connection</h3><p>People spend time on social platforms following content and collecting interactions, but may not build relationships with people living around them.</p></div>
+<div class="card"><div class="num">Problem 03</div><h3>Local information is scattered</h3><p>Neighbourhood updates, local problems, event announcements and requests for help are spread across separate chats and informal groups.</p></div>
+<div class="card"><div class="num">Problem 04</div><h3>Newcomers and travellers lack a local network</h3><p>People visiting or moving to a place may want company, local suggestions or a way to join activities, but do not know whom to approach.</p></div>
+</div>
+<h3>Why existing platforms do not fully solve it</h3>
+<table><thead><tr><th>Platform type</th><th>Typical limitation</th><th>Neighbourhood Connect's approach</th></tr></thead><tbody>
+<tr><td>WhatsApp groups</td><td>Conversations are often unstructured and discovery depends on already being invited.</td><td>Discover people, activities and community topics in one place.</td></tr>
+<tr><td>Instagram / Facebook</td><td>Primarily organised around content, pages and social feeds.</td><td>Organise around participation, shared interests and local action.</td></tr>
+<tr><td>Meetup-style platforms</td><td>Can feel event-centric or formal rather than part of everyday neighbourhood life.</td><td>Make small, nearby, everyday activities easy to create and join.</td></tr>
+<tr><td>Dating apps</td><td>Use a different relationship intent and social framing.</td><td>Support friendship, hobbies, travel, activities and community participation.</td></tr>
+</tbody></table>
+</section>
+
+<section id="vision">
+<div class="kicker">03 · Vision and principles</div><h2>From a social app to a living community network</h2>
+<p class="quote">“Don't just know who lives around you. Get to know them, do things together and make your neighbourhood better.”</p>
+<div class="grid">
+<div class="card"><h3>People over followers</h3><p>Encourage useful relationships and participation rather than vanity metrics.</p></div>
+<div class="card"><h3>Activities over scrolling</h3><p>Give people a clear reason to connect and meet in the real world.</p></div>
+<div class="card"><h3>Community over isolation</h3><p>Make it easier for residents, newcomers and visitors to take part.</p></div>
+<div class="card"><h3>Useful over noisy</h3><p>Prioritise relevant local information, discussions and recommendations.</p></div>
+</div>
+</section>
+
+<section id="experience">
+<div class="kicker">04 · Core user experience</div><h2>How the application works</h2>
+<div class="flow"><span class="step">Register</span><span class="arrow">→</span><span class="step">Build profile</span><span class="arrow">→</span><span class="step">Choose interests</span><span class="arrow">→</span><span class="step">Discover nearby</span><span class="arrow">→</span><span class="step">Join or create</span><span class="arrow">→</span><span class="step">Connect and participate</span></div>
+<h3>Instant join: no approval friction</h3>
+<p>The intended default experience is simple: if an activity has available places and is open to the community, a person can join immediately. No organiser approval request and no waiting for acceptance. The goal is to make participation feel as easy as saying, “I'm in.”</p>
+<div class="callout"><strong>Product rule:</strong> Open activities use instant joining. Show the available capacity and current participant count clearly, and close joining when the activity is full or no longer available.</div>
+<p>For the current product direction, keep the joining journey lightweight. Private or restricted participation can be considered later only if a real use case requires it; it should not complicate the basic community experience.</p>
+<h3>Example journey</h3>
+<ol><li>A resident posts: “Cricket at 6 PM, need 4 more players.”</li><li>Nearby users who are interested discover the activity.</li><li>They tap <strong>Join</strong> and are added immediately if spaces remain.</li><li>The group uses activity chat to coordinate the location and timing.</li><li>After the activity, participants can stay connected and discover another shared activity.</li></ol>
+</section>
+
+<section id="features">
+<div class="kicker">05 · Core product features</div><h2>What users can do</h2>
+<div class="grid">
+<div class="card"><h3>Nearby activity discovery</h3><p>Find sports, fitness, learning, entertainment, hobby and social activities using location, category, date and availability.</p></div>
+<div class="card"><h3>Create an activity</h3><p>Post what you want to do, when, where, the number of participants needed and useful details.</p></div>
+<div class="card"><h3>One-tap joining</h3><p>Join open activities instantly while places are available. Leave an activity if plans change.</p></div>
+<div class="card"><h3>People discovery</h3><p>Find nearby people based on shared interests, skills and languages, with privacy controls.</p></div>
+<div class="card"><h3>Connections and messaging</h3><p>Build connections and coordinate through direct messages and activity group conversations.</p></div>
+<div class="card"><h3>Notifications</h3><p>Receive relevant updates about joins, messages, activity changes and community interactions.</p></div>
+</div>
+</section>
+
+<section id="travellers">
+<div class="kicker">06 · Neighbour Connect + Travellers</div><h2>Connect residents and people on the move</h2>
+<p>Travellers should be part of the community experience, not a disconnected travel product. Someone visiting Hyderabad, Goa or another city should be able to discover local people, activities and shared plans.</p>
+<div class="grid">
+<div class="card"><h3>Find travel companions</h3><p>Discover people planning a similar trip, route or destination and connect around compatible plans.</p></div>
+<div class="card"><h3>Join local activities while travelling</h3><p>A visitor can find a cricket game, food walk, sightseeing plan, local event or group outing near their stay.</p></div>
+<div class="card"><h3>Share travel plans</h3><p>Post destination, dates, interests and the kind of company or activity being sought.</p></div>
+<div class="card"><h3>Local community discovery</h3><p>Help visitors discover community events and connect with residents who choose to participate.</p></div>
+</div>
+<div class="callout warning"><strong>Important design consideration:</strong> Travel connections involve meeting people who may not know each other. Add clear profile context, reporting/blocking, meetup guidance and privacy controls before promoting this feature widely.</div>
+</section>
+
+<section id="roadmap">
+<div class="kicker">07 · Product evolution</div><h2>What comes next — version by version</h2>
+<p class="lead">Build a useful activity network first. Then expand it into a platform that supports the wider needs of a neighbourhood. AI should strengthen a useful community, not be added before the community has meaningful activity and data.</p>
+<div class="phase">
+<h3>Foundation / V1 — Make local connections happen <span class="status">Core product</span></h3>
+<ul><li>Registration, login and user profiles.</li><li>Interest and location-based discovery.</li><li>Create, discover and instantly join open activities.</li><li>Nearby people discovery and connections.</li><li>Direct and activity group messaging.</li><li>Notifications, reports, blocking and moderation.</li><li>Complete the web experience and connect the key screens to the backend.</li></ul>
+</div>
+<div class="phase">
+<h3>Next version — Neighbourhood community layer <span class="planned">Planned</span></h3>
+<ul><li><strong>Community discussions:</strong> topic-based conversations for residents and local groups.</li><li><strong>Report local issues:</strong> raise problems such as garbage collection, streetlights, water supply, damaged roads or public-space maintenance.</li><li><strong>Issue status and updates:</strong> allow the community to add details, discuss possible solutions and follow progress.</li><li><strong>Gatherings and announcements:</strong> organise festivals, clean-up drives, society meetings, sports days and informal get-togethers.</li><li><strong>Community participation:</strong> comment, support, share updates and volunteer where appropriate.</li></ul>
+<p class="small">This version changes the product from “find someone to do something with” into “participate in what is happening around your neighbourhood.”</p>
+</div>
+<div class="phase">
+<h3>Following version — Community leadership <span class="planned">Planned</span></h3>
+<ul><li>Introduce community leaders or moderators for a defined neighbourhood or community.</li><li>Give leaders tools to organise gatherings, publish verified announcements and coordinate volunteers.</li><li>Provide issue-management tools to track reports, assign follow-up and post progress updates.</li><li>Give residents a transparent way to identify community representatives and understand their role.</li></ul>
+<p class="small">Define the role carefully: a community leader should help coordinate and moderate, not have unchecked control over residents or discussions.</p>
+</div>
+<div class="phase">
+<h3>Next stage — AI community assistant <span class="planned">Planned</span></h3>
+<ul><li>Introduce an AI chatbot that can answer questions using relevant information from the application.</li><li>Help users find activities, people, discussions, gatherings and local issue updates.</li><li>Answer natural-language questions such as “What is happening near me this weekend?” or “Has anyone reported the garbage issue in my area?”</li><li>Summarise long discussions and surface useful information without making users search through every post.</li><li>Provide source links or references to the posts and updates used in an answer.</li></ul>
+</div>
+<div class="phase">
+<h3>Intelligence layer — Personalised recommendations <span class="planned">Planned</span></h3>
+<ul><li>Recommend activities based on interests, past participation and saved preferences.</li><li>Suggest people with overlapping interests and compatible activity patterns.</li><li>Recommend gatherings and discussions relevant to the user's neighbourhood.</li><li>Learn from meaningful signals such as joins, attendance or completion, saves and feedback—not just clicks.</li><li>Improve relevance over time while allowing users to control personalisation.</li></ul>
+</div>
+</section>
+
+<section id="intelligence">
+<div class="kicker">08 · AI and recommendation system</div><h2>Make the platform feel relevant to each person</h2>
+<h3>A. AI chatbot: understand the whole community</h3>
+<p>The assistant should work as a natural-language interface over approved application data. It can help a user discover information that already exists in activities, profiles, discussions, gatherings and issue reports.</p>
+<table><thead><tr><th>User asks</th><th>Assistant should help find</th></tr></thead><tbody>
+<tr><td>“What can I do this evening nearby?”</td><td>Open activities matching location, time and interests.</td></tr>
+<tr><td>“Are people playing badminton this weekend?”</td><td>Relevant badminton activities and their availability.</td></tr>
+<tr><td>“What is happening in my community?”</td><td>Upcoming gatherings, announcements and active discussions.</td></tr>
+<tr><td>“Has anyone raised the garbage issue?”</td><td>Relevant issue reports, discussion and latest status.</td></tr>
+<tr><td>“How can I meet people who like photography?”</td><td>Relevant public profiles, groups and activities, subject to privacy settings.</td></tr>
+</tbody></table>
+<div class="callout"><strong>Implementation direction:</strong> Use retrieval-augmented generation (RAG) over permission-filtered application content. Retrieve relevant records, generate a grounded answer, and link back to the original content. The chatbot must respect visibility, privacy and access permissions; it should never expose private messages or hidden profile data to unauthorised users.</div>
+
+<h3>B. Recommendation engine: predict what may be useful</h3>
+<p>The recommendation engine should learn from a user's interests and actual participation history to surface activities and connections they are more likely to find valuable.</p>
+<div class="grid">
+<div class="card"><h3>Possible input signals</h3><ul><li>Selected interests and skills</li><li>Activities joined and attended</li><li>Categories explored or saved</li><li>Preferred days, times and distance</li><li>Feedback and repeat participation</li></ul></div>
+<div class="card"><h3>Possible recommendations</h3><ul><li>Activities you may want to join</li><li>People with shared interests</li><li>Upcoming gatherings nearby</li><li>Relevant community discussions</li><li>New interests and activities to explore</li></ul></div>
+</div>
+<h3>Suggested recommendation pipeline</h3>
+<div class="flow"><span class="step">Collect consented signals</span><span class="arrow">→</span><span class="step">Build user-interest profile</span><span class="arrow">→</span><span class="step">Generate candidates</span><span class="arrow">→</span><span class="step">Rank by relevance</span><span class="arrow">→</span><span class="step">Show recommendations</span><span class="arrow">→</span><span class="step">Learn from feedback</span></div>
+<p><strong>First approach:</strong> Start with a transparent rule-based scoring model using interest overlap, distance, time compatibility, activity availability and previous participation. Later, evaluate collaborative filtering or learning-to-rank methods once enough quality interaction data exists.</p>
+<p><strong>Example scoring dimensions:</strong> shared-interest score, location suitability, time fit, activity popularity/availability and personal participation history. Keep the score explainable—for example, “Recommended because you joined two weekend cricket activities.”</p>
+<div class="callout warning"><strong>Do not optimise only for engagement.</strong> A good recommendation should help people find a meaningful activity or connection, not keep them endlessly scrolling. Avoid sensitive inferences, provide personalisation controls and measure real participation outcomes.</div>
+</section>
+
+<section id="safety">
+<div class="kicker">09 · Trust, privacy and safety</div><h2>Community growth needs responsible design</h2>
+<ul>
+<li><strong>Location privacy:</strong> use approximate public location and distance-based discovery; do not expose a user's precise home coordinates.</li>
+<li><strong>User control:</strong> provide profile visibility and discoverability settings, plus block and report controls.</li>
+<li><strong>Safe meetups:</strong> publish practical meetup guidance, public-place suggestions and optional check-in or trusted-contact features.</li>
+<li><strong>Moderation:</strong> support reporting of users, activities, discussions and issue posts, with clear review workflows.</li>
+<li><strong>AI permissions:</strong> retrieve only content the requesting user is authorised to see; keep private conversations private.</li>
+<li><strong>Community leadership:</strong> define scope, accountability and escalation processes for leaders and moderators.</li>
+<li><strong>Instant-join safeguards:</strong> enforce capacity limits atomically, prevent duplicate joins and show clear activity status.</li>
+</ul>
+</section>
+
+<section id="status">
+<div class="kicker">10 · Current implementation status</div><h2>Where the project stands today</h2>
+<p>The following is the implementation snapshot from the project notes supplied for this blueprint. Treat it as a checkpoint to verify against the live repositories before presenting it as a current release status.</p>
+<table><thead><tr><th>Area</th><th>Reported status</th><th>Details</th></tr></thead><tbody>
+<tr><td>Backend</td><td><span class="status">Implemented / deployed</span></td><td>Authentication, profiles, activities, geospatial discovery, participation, connections, messaging, notifications, people discovery, reports and security controls.</td></tr>
+<tr><td>Web application</td><td><span class="status">Deployed; partial integration</span></td><td>Landing, authentication, dashboard, activity listing, people discovery and public profiles are wired. Several secondary screens still need backend integration.</td></tr>
+<tr><td>Mobile application</td><td><span class="prototype">UI prototype</span></td><td>React Native / Expo screens exist; most are static or partially wired and the app has not been released to app stores.</td></tr>
+<tr><td>Admin panel</td><td><span class="prototype">UI shell</span></td><td>Dashboard, users, categories and reports screens exist visually; authentication and API integration remain.</td></tr>
+</tbody></table>
+<h3>Important unfinished work noted in the project snapshot</h3>
+<ul><li>Connect activity detail and create-activity screens to real backend data.</li><li>Finish join/leave flows and real messaging and notifications interfaces.</li><li>Persist settings and add email verification and password reset landing pages.</li><li>Complete guided profile and interest onboarding.</li><li>Finish mobile API integration and admin authentication/moderation workflows.</li><li>Strengthen automated tests, CI/CD, monitoring and operational readiness.</li></ul>
+<div class="callout"><strong>Practical priority:</strong> Finish the core web journey end-to-end before expanding into the community issues layer. A smaller set of reliable, actively used features is more valuable than many disconnected screens.</div>
+</section>
+
+<section id="architecture">
+<div class="kicker">11 · Technology and architecture</div><h2>Current technical foundation</h2>
+<table><thead><tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>Backend</td><td>Node.js, Express, TypeScript</td><td>API and application logic</td></tr>
+<tr><td>Database</td><td>MongoDB Atlas, Mongoose</td><td>Users, activities, connections and community data</td></tr>
+<tr><td>Real-time</td><td>Socket.IO</td><td>Direct and activity group messaging</td></tr>
+<tr><td>Authentication</td><td>JWT, refresh tokens</td><td>Sessions and access control</td></tr>
+<tr><td>Media</td><td>Cloudinary</td><td>Image storage and delivery</td></tr>
+<tr><td>Notifications / email</td><td>Firebase Admin, Nodemailer, SMTP</td><td>Push and email notifications</td></tr>
+<tr><td>Web</td><td>React 18, TypeScript, Vite, Tailwind CSS, React Query, React Router</td><td>Browser application</td></tr>
+<tr><td>Mobile</td><td>React Native, Expo, SecureStore</td><td>Mobile application foundation</td></tr>
+<tr><td>Admin</td><td>React, Vite</td><td>Administration interface prototype</td></tr>
+<tr><td>Deployment</td><td>Render, Netlify</td><td>Backend and web hosting</td></tr>
+</tbody></table>
+<h3>Potential architecture additions for later versions</h3>
+<ul><li>Geospatial and text search improvements for community issues and discussions.</li><li>Background jobs for notifications, recommendation refreshes and moderation queues.</li><li>Vector search / embeddings for semantic retrieval in the AI assistant, with strict access filtering.</li><li>Recommendation event tracking and offline evaluation datasets.</li><li>Observability, audit logs, rate limits and scalable caching as usage grows.</li></ul>
+</section>
+
+<section id="success">
+<div class="kicker">12 · How to measure success</div><h2>Measure real community value</h2>
+<p>Do not judge the product only by registrations, impressions or time spent in the app. Measure whether people are actually connecting and participating.</p>
+<div class="grid">
+<div class="card"><h3>Activity health</h3><p>Activities created, join conversion, fill rate, attendance or completion rate, repeat participation.</p></div>
+<div class="card"><h3>Social connection</h3><p>New connections formed, repeat interactions, group participation and connections that lead to activities.</p></div>
+<div class="card"><h3>Community usefulness</h3><p>Issues reported, discussions with constructive participation, gatherings organised and updates resolved or closed.</p></div>
+<div class="card"><h3>Recommendation quality</h3><p>Recommendation-to-join rate, attendance after recommendation, user feedback and diversity of activities discovered.</p></div>
+</div>
+</section>
+
+<section id="pitch">
+<div class="kicker">13 · Explain the project simply</div><h2>The one-minute project explanation</h2>
+<div class="card">
+<p class="quote">“Neighbourhood Connect is a community-driven platform that helps people build real connections with the people around them.”</p>
+<p>Today, many of us live in the same neighbourhood but barely know the people around us. We use social media to follow people, watch content and share posts, but it does not always help us build an actual social life.</p>
+<p>With Neighbourhood Connect, people can find others nearby who share their interests, create activities like cricket, running, learning or movie plans, and join instantly. Travellers can also connect with local people and discover activities in the places they visit.</p>
+<p>Over time, the platform will grow into a complete community space where residents can discuss local problems, report issues like garbage collection, organise gatherings and work together. Community leaders can help coordinate these efforts, while AI can make it easier to find relevant information, people and activities.</p>
+<p>The long-term goal is simple: use technology not just to connect people online, but to help them build better communities offline.</p>
+</div>
+</section>
+
+<section>
+<div class="kicker">A useful product test</div><h2>What should a user be able to say?</h2>
+<p>“I found people to play with. I joined a local event. I met someone with the same interests. I found out what was happening in my neighbourhood. I helped get a local issue noticed.”</p>
+<p>If Neighbourhood Connect consistently enables those outcomes, it is delivering on its purpose.</p>
+</section>
+</main>
+</div>
+<footer><div class="wrap">Neighbourhood Connect · Product vision and roadmap draft · Working document — update implementation status as the product evolves.</div></footer>
+</body>
+</html>
